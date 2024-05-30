@@ -1,8 +1,8 @@
-import Layout from "./components/layout/Layout"
-import Home from "./pages/Home"
 import { useContext } from "react"
 import ThemeSwitcher from "./components/common/header/ThemeSwitcher"
 import { BookStoreThemeContext } from "./context/BookStoreThemeContext"
+import { RouterProvider } from "react-router-dom"
+import { router } from "./router/router"
 
 function App() {
   const { themeName, toggleThemeName } = useContext(BookStoreThemeContext);
@@ -10,9 +10,7 @@ function App() {
   return (
     <>
       <ThemeSwitcher themeName={themeName} setThemeName={toggleThemeName}/>
-      <Layout>
-        <Home />
-      </Layout>
+      <RouterProvider router={router} />
     </>
   )
 }
