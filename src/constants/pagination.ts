@@ -1,0 +1,1 @@
+export const LIST_NUM = 8 as const;

@@ -1,4 +1,3 @@
-import React from 'react'
 import { TThemeName } from '../../../style/theme'
 
 interface Props {
@@ -15,7 +14,6 @@ function ThemeSwitcher({ themeName, setThemeName }: Props) {
     <button onClick={toggleTheme}>{themeName}</button>
   )
 }
-
 
 
 export default ThemeSwitcher

@@ -3,6 +3,9 @@ import Home from "../pages/Home";
 import Error from "../pages/Error";
 import Layout from "../components/layout/Layout";
 import Signup from "../pages/Signup";
+import ResetPassword from "../pages/ResetPassword";
+import Signin from "../pages/Signin";
+import Books from "../pages/Books";
 
 export const router = createBrowserRouter([
   {
@@ -11,11 +14,19 @@ export const router = createBrowserRouter([
     errorElement: <Layout><Error /></Layout>
   },
   {
-    path: '/books',
-    element: <Layout><div>도서 목록</div></Layout>
+    path: '/users/signup',
+    element: <Layout><Signup /></Layout>
   },
   {
-    path: '/signup',
-    element: <Layout><Signup /></Layout>
+    path: '/users/reset',
+    element: <Layout><ResetPassword /></Layout>
+  },
+  {
+    path: '/users/signin',
+    element: <Layout><Signin /></Layout>
+  },
+  {
+    path: '/books',
+    element: <Layout><Books /></Layout>
   },
 ]);

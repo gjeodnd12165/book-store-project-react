@@ -1,9 +1,15 @@
 export interface IBook {
   id: number;
-  img: number;
   title: string;
+  img: number;
+  category_id: number;
+  form: string;
+  author: string;
+  isbn: string;
+  pages: number;
   summary: string;
-  autho: string;
+  detail: string;
+  contents: string;
   price: number;
   likes: number;
   pubDate: string;

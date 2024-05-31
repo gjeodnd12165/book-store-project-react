@@ -1,39 +1,44 @@
-import { styled } from 'styled-components';
 import Title from '../components/common/Title';
 import InputText from '../components/common/InputText';
 import Button from '../components/common/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { signup } from '../api/user.api';
+import { signin } from '../api/user.api';
 import { useAlert } from '../hooks/useAlert';
+import { SignupStyle } from './Signup';
+import { useAuthStore } from '../store/authStore';
 
-export interface SignupProps {
+export interface SigninProps {
   email: string;
   password: string;
-  username: string;
 }
 
-function Signup() {
+function Signin() {
   const navigate = useNavigate();
   const showAlert = useAlert();
+
+  const { storeSignin } = useAuthStore();
 
   const {
     register, 
     handleSubmit, 
     formState: { errors }
-  } = useForm<SignupProps>();
+  } = useForm<SigninProps>();
 
-  const onSubmit = (data: SignupProps) => {
-    signup(data).then(() => {
-      showAlert('회원가입이 완료되었습니다.');
-      navigate('/users/login');
+  const onSubmit = (data: SigninProps) => {
+    signin(data).then((res) => {
+      storeSignin(res.token);
+      showAlert('로그인이 완료되었습니다.');
+      navigate('/');
+    }, () => {
+      showAlert('로그인이 실패했습니다.');
     });
   }
 
   return (
     <>
-      <Title size='large'>회원가입</Title>
-      <SignupStyle>
+      <Title size='large'>로그인</Title>
+      <SigninStyle>
         <form onSubmit={handleSubmit(onSubmit)}>
           <fieldset>
             <InputText 
@@ -52,49 +57,17 @@ function Signup() {
             className='error-text'>비밀번호를 입력해주세요.</p>}
           </fieldset>
           <fieldset>
-            <InputText 
-            placeholder='닉네임' 
-            inputType='text' 
-            {...register('username', { required: true })}/>
-            {errors.username && <p
-            className='error-text'>유저를 입력해주세요.</p>}
-          </fieldset>
-          <fieldset>
             <Button size='medium' schema='primary' type='submit'>회원가입</Button>
           </fieldset>
           <div className="info">
             <Link to='/users/reset'>비밀번호 초기화</Link>
           </div>
         </form>
-      </SignupStyle>
+      </SigninStyle>
     </>
   )
 }
 
-export const SignupStyle = styled.div`
-  max-width: ${({ theme }) => theme.layout.width.small};
-  margin: 80px auto;
+export const SigninStyle = SignupStyle;
 
-  fieldset {
-    border: 0;
-    padding: 0 0 8px 0;
-    .error-text {
-      color: red;
-    }
-  }
-
-  input {
-    width: 100%;
-  }
-
-  button {
-    width: 100%;
-  }
-
-  .info {
-    text-align: center;
-    padding: 10px 0 0 0;
-  }
-`;
-
-export default Signup
+export default Signin
