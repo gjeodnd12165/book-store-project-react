@@ -2,7 +2,7 @@ export type TThemeName = 'light' | 'dark';
 export type TColorKey = 'primary' | 'background' | 'secondary' | 'third' | 'border' | 'text';
 export type THeadingSize = 'large' | 'medium' | 'small';
 export type TButtonSize = 'large' | 'medium' | 'small';
-export type TButtonSchema = 'primary' | 'normal';
+export type TButtonSchema = 'primary' | 'normal' | 'like';
 export type TLayoutWidth = 'large' | 'medium' | 'small';
 
 export interface ITheme {
@@ -81,6 +81,10 @@ export const light: ITheme = {
       normal: {
         color: 'black',
         backgroundColor: 'lightgray'
+      },
+      like: {
+        color: 'white',
+        backgroundColor: 'coral'
       }
     }
   },

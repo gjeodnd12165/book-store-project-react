@@ -6,6 +6,7 @@ import Signup from "../pages/Signup";
 import ResetPassword from "../pages/ResetPassword";
 import Signin from "../pages/Signin";
 import Books from "../pages/Books";
+import BookDetail from "../pages/BookDetail";
 
 export const router = createBrowserRouter([
   {
@@ -28,5 +29,9 @@ export const router = createBrowserRouter([
   {
     path: '/books',
     element: <Layout><Books /></Layout>
+  },
+  {
+    path: 'books/:bookId',
+    element: <Layout><BookDetail /></Layout>
   },
 ]);

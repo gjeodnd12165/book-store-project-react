@@ -12,10 +12,10 @@ export interface IBook {
   contents: string;
   price: number;
   likes: number;
-  pubDate: string;
+  pub_date: string;
 }
 
 export interface IBookDetail extends IBook {
-  categoryName: string;
+  category_name: string;
   liked: boolean;
 }
