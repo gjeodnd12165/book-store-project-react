@@ -15,7 +15,7 @@ export interface SigninProps {
 
 function Signin() {
   const navigate = useNavigate();
-  const showAlert = useAlert();
+  const { showAlert } = useAlert();
 
   const { storeSignin } = useAuthStore();
 

@@ -9,3 +9,16 @@ export interface IOrder {
   total_price: number;
   total_quantity: number;
 }
+
+export interface IOrderSheet {
+  cartItemIds: number[];
+  title: string;
+  totalPrice: number;
+  totalQuantity: number;
+  totalTypes: number;
+  delivery: {
+    address: string;
+    receiver: string;
+    contact: string;
+  }
+}

@@ -11,7 +11,7 @@ export const useBook = (bookId: string | undefined) => {
   const [cartAdded, setCartAdded] = useState<boolean>(false);
 
   const { isSignedIn } = useAuthStore();
-  const showAlert = useAlert();
+  const { showAlert } = useAlert();
 
   const addToCart = (quantity: number) => () =>  {
     if (!book) return;
