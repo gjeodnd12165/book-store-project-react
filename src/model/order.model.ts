@@ -1,13 +1,13 @@
 export interface IOrder {
   id: number;
-  created_at: string;
-  address: string;
-  receiver: string;
-  contact: string;
+  totalPrice: number;
+  totalQuantity: number;
+  totalTypes: number;
   title: string;
-  total_types: number;
-  total_price: number;
-  total_quantity: number;
+  order: {
+    createdAt: string;
+    delivery: IDelivery;
+  }
 }
 
 export interface IOrderSheet {
@@ -16,9 +16,29 @@ export interface IOrderSheet {
   totalPrice: number;
   totalQuantity: number;
   totalTypes: number;
-  delivery: {
-    address: string;
-    receiver: string;
-    contact: string;
+  delivery: IDelivery;
+}
+
+export interface IDelivery {
+  address: string;
+  receiver: string;
+  contact: string;
+}
+
+// need to be flatten
+export interface IOrderDetailItem {
+  bookId: number;
+  book: {
+    author: string;
+    price: number;
+    title: string;
+  };
+  quantity: number;
+  order: {
+    userId: number;
   }
+}
+
+export interface IOrderListItem extends IOrder {
+  detail?: IOrderDetailItem[];
 }
