@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { IPagination } from '../../model/pagenation.model';
-import { LIST_NUM } from '../../constants/pagination';
+import { IPagination } from '@/model/pagination.model';
+import { LIST_NUM } from '@/constants/pagination';
 import Button from '../common/Button';
-import { QUERYSTRING } from '../../constants/querystring';
+import { QUERYSTRING } from '@/constants/querystring';
 import { useSearchParams } from 'react-router-dom';
 
 interface Props {

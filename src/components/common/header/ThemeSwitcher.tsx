@@ -1,4 +1,4 @@
-import { TThemeName } from '../../../style/theme'
+import { TThemeName } from '@/style/theme'
 
 interface Props {
   themeName: TThemeName;

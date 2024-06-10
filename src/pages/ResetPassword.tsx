@@ -1,12 +1,9 @@
-import { useState } from 'react'
 import Title from '../components/common/Title';
 import InputText from '../components/common/InputText';
 import Button from '../components/common/Button';
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { resetRequest } from '../api/user.api';
-import { useAlert } from '../hooks/useAlert';
 import { SignupStyle } from './Signup';
+import { useAuth } from '@/hooks/useAuth';
 
 export interface ResetPasswordProps {
   email: string;
@@ -14,9 +11,7 @@ export interface ResetPasswordProps {
 }
 
 function ResetPassword() {
-  const navigate = useNavigate();
-  const { showAlert } = useAlert();
-  const [resetRequested, setResetRequested] = useState(false);
+  const { userResetPassword, resetRequested } = useAuth();
 
   const {
     register, 
@@ -24,22 +19,11 @@ function ResetPassword() {
     formState: { errors }
   } = useForm<ResetPasswordProps>();
 
-  const onSubmit = (data: ResetPasswordProps) => {
-    if (resetRequested) {
-      showAlert('비밀번호가 초기화되었습니다.');
-      navigate('/users/login');
-    } else {
-      resetRequest(data).then(() => {
-        setResetRequested(true);
-      })
-    }
-  }
-
   return (
     <>
       <Title size='large'>비밀번호 초기화</Title>
       <ResetPasswordStyle>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(userResetPassword)}>
           <fieldset>
             <InputText 
             placeholder='이메일' 

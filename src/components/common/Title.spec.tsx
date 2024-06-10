@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/react';
 import Title from './Title';
-import { BookStoreThemeProvider } from '../../context/BookStoreThemeContext';
+import { BookStoreThemeProvider } from '@/context/BookStoreThemeContext';
 
 describe('Title 컴포넌트 테스트', () => {
   it('렌더를 확인', () => {

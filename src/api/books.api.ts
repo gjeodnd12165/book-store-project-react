@@ -1,5 +1,5 @@
 import { IBook, IBookDetail } from "../model/book.model";
-import { IPagination } from "../model/pagenation.model";
+import { IPagination } from "../model/pagination.model";
 import { httpClient } from "./http";
 
 interface IFetchBooksParams {

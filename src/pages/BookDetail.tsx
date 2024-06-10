@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import ElipsisBox from '../components/common/ElipsisBox';
 import LikeButton from '../components/book/LikeButton';
 import AddToCart from '../components/book/AddToCart';
+import BookReview from '@/components/book/BookReview';
 
 type TBookInfoList = {
   label: string;
@@ -57,7 +58,7 @@ const bookInfoList: TBookInfoList = [
 
 function BookDetail() {
   const { bookId } = useParams();
-  const { book, likeToggle } = useBook(bookId);
+  const { book, likeToggle, reviews, addReview } = useBook(bookId);
 
   if (!book) return null;
 
@@ -96,6 +97,9 @@ function BookDetail() {
       
         <Title size='medium' color='primary'>목차</Title>
         <ElipsisBox linelimit={4}>{book.contents}</ElipsisBox>
+        
+        <Title size='medium' color='primary'>리뷰</Title>
+        <BookReview reviews={reviews} onAdd={addReview}/>
       </div>
     </BookDetailStyle>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { IBookDetail } from '../../model/book.model';
+import { IBookDetail } from '@/model/book.model';
 import Button from '../common/Button';
 import { FaHeart } from 'react-icons/fa';
 

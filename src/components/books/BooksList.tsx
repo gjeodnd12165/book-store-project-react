@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import BookItem from './BookItem'
-import { IBook } from '../../model/book.model'
+import { IBook } from '@/model/book.model'
 import { useLocation } from 'react-router-dom';
-import { QUERYSTRING } from '../../constants/querystring';
+import { QUERYSTRING } from '@/constants/querystring';
 import { useEffect, useState } from 'react';
 import { TViewMode } from './BooksViewSwitcher';
 

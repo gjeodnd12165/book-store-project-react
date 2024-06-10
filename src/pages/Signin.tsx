@@ -1,12 +1,10 @@
 import Title from '../components/common/Title';
 import InputText from '../components/common/InputText';
 import Button from '../components/common/Button';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { signin } from '../api/user.api';
-import { useAlert } from '../hooks/useAlert';
 import { SignupStyle } from './Signup';
-import { useAuthStore } from '../store/authStore';
+import { useAuth } from '@/hooks/useAuth';
 
 export interface SigninProps {
   email: string;
@@ -14,10 +12,7 @@ export interface SigninProps {
 }
 
 function Signin() {
-  const navigate = useNavigate();
-  const { showAlert } = useAlert();
-
-  const { storeSignin } = useAuthStore();
+  const { userSignin } = useAuth();
 
   const {
     register, 
@@ -25,21 +20,11 @@ function Signin() {
     formState: { errors }
   } = useForm<SigninProps>();
 
-  const onSubmit = (data: SigninProps) => {
-    signin(data).then((res) => {
-      storeSignin(res.token);
-      showAlert('로그인이 완료되었습니다.');
-      navigate('/');
-    }, () => {
-      showAlert('로그인이 실패했습니다.');
-    });
-  }
-
   return (
     <>
       <Title size='large'>로그인</Title>
       <SigninStyle>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(userSignin)}>
           <fieldset>
             <InputText 
             placeholder='이메일' 

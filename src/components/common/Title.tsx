@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { TColorKey, THeadingSize } from '../../style/theme';
+import { TColorKey, THeadingSize } from '@/style/theme';
 
 interface Props {
   children: React.ReactNode;

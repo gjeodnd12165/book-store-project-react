@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Button from '../common/Button'
 import { FaList, FaTh } from 'react-icons/fa'
 import { useSearchParams } from 'react-router-dom'
-import { QUERYSTRING } from '../../constants/querystring'
+import { QUERYSTRING } from '@/constants/querystring'
 import { useEffect } from 'react'
 
 const viewOptions = [

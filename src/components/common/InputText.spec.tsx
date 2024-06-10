@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import InputText from './InputText';
-import { BookStoreThemeProvider } from '../../context/BookStoreThemeContext';
+import { BookStoreThemeProvider } from '@/context/BookStoreThemeContext';
 import React from 'react';
 
 describe('Button 컴포넌트 테스트', () => {

@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import InputText from '../common/InputText';
 import Button from '../common/Button';
-import { IBookDetail } from '../../model/book.model';
+import { IBookDetail } from '@/model/book.model';
 import { Link } from 'react-router-dom';
-import { useBook } from '../../hooks/useBook';
+import { useBook } from '@/hooks/useBook';
 
 interface Props {
   book: IBookDetail

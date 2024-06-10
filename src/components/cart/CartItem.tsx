@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
-import { ICart } from '../../model/cart.model';
+import { ICart } from '@/model/cart.model';
 import Button from '../common/Button';
 import Title from '../common/Title';
-import { formatNumber } from '../../utils/format';
+import { formatNumber } from '@/utils/format';
 import CheckIconButton from './CheckIconButton';
-import { useAlert } from '../../hooks/useAlert';
+import { useAlert } from '@/hooks/useAlert';
 
 interface Props {
   cart: ICart;
