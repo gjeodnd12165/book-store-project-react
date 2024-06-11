@@ -1,13 +1,10 @@
-import { TThemeName } from '@/style/theme'
+import { BookStoreThemeContext } from '@/context/BookStoreThemeContext';
+import { useContext } from 'react';
 
-interface Props {
-  themeName: TThemeName;
-  setThemeName: (themeName: TThemeName) => void;
-}
-
-function ThemeSwitcher({ themeName, setThemeName }: Props) {
+function ThemeSwitcher() {
+  const { themeName, toggleThemeName } = useContext(BookStoreThemeContext);
   const toggleTheme = () => {
-    setThemeName(themeName === 'light' ? 'dark' : 'light');
+    toggleThemeName(themeName === 'light' ? 'dark' : 'light');
   }
 
   return (

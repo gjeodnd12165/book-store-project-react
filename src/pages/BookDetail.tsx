@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components'
 import { useBook } from '../hooks/useBook';
@@ -11,6 +11,8 @@ import ElipsisBox from '../components/common/ElipsisBox';
 import LikeButton from '../components/book/LikeButton';
 import AddToCart from '../components/book/AddToCart';
 import BookReview from '@/components/book/BookReview';
+import { Tab, Tabs } from '@/components/common/Tabs';
+import Modal from '@/components/common/Modal';
 
 type TBookInfoList = {
   label: string;
@@ -60,14 +62,19 @@ function BookDetail() {
   const { bookId } = useParams();
   const { book, likeToggle, reviews, addReview } = useBook(bookId);
 
+  const [isImgOpen, setIsImgOpen] = useState<boolean>(false);
+
   if (!book) return null;
 
   return (
     <BookDetailStyle>
       <header className='header'>
-        <div className="img">
+        <div className="img" onClick={() => setIsImgOpen(true)}>
           <img src={getImgSrc(book.img)} alt={book.title} />
         </div>
+        <Modal isOpen={isImgOpen} onClose={() => setIsImgOpen(false)}>
+          <img src={getImgSrc(book.img)} alt={book.title} />
+        </Modal>
         <div className="info">
           <Title size='large' color='text'>
             {book.title}
@@ -92,14 +99,19 @@ function BookDetail() {
         </div>
       </header>
       <div className="content">
-        <Title size='medium' color='primary'>상세 설명</Title>
-        <ElipsisBox linelimit={4}>{book.detail}</ElipsisBox>
+        <Tabs>
+          <Tab title='상세 설명'>
+            <ElipsisBox linelimit={4}>{book.detail}</ElipsisBox>
+          </Tab>
+          <Tab title='목차'>
+            <ElipsisBox linelimit={4}>{book.contents}</ElipsisBox>
+          </Tab>
+          <Tab title='리뷰'>
+            <BookReview reviews={reviews} onAdd={addReview}/>
+          </Tab>
       
-        <Title size='medium' color='primary'>목차</Title>
-        <ElipsisBox linelimit={4}>{book.contents}</ElipsisBox>
         
-        <Title size='medium' color='primary'>리뷰</Title>
-        <BookReview reviews={reviews} onAdd={addReview}/>
+        </Tabs>
       </div>
     </BookDetailStyle>
   )
@@ -114,6 +126,8 @@ const BookDetailStyle = styled.div`
 
     .img {
       flex: 1;
+      cursor: pointer;
+
       img {
         width: 100%;
         height: auto;

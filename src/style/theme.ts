@@ -42,7 +42,7 @@ export const light: ITheme = {
   color: {
     primary: '#ff5000',
     secondary: '#5f5f5f',
-    background: 'lightgray',
+    background: '#f5f5f5',
     third: 'green',
     border: 'gray',
     text: 'black'
@@ -105,7 +105,7 @@ export const dark: ITheme = {
   name: 'dark',
   color: {
     primary: 'coral',
-    background: 'midnightblue',
+    background: '#424242',
     secondary: 'darkblue',
     third: 'darkgreen',
     border: 'gray',

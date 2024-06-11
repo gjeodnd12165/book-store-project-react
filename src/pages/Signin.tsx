@@ -42,7 +42,7 @@ function Signin() {
             className='error-text'>비밀번호를 입력해주세요.</p>}
           </fieldset>
           <fieldset>
-            <Button size='medium' schema='primary' type='submit'>회원가입</Button>
+            <Button size='medium' schema='primary' type='submit'>로그인</Button>
           </fieldset>
           <div className="info">
             <Link to='/users/reset'>비밀번호 초기화</Link>
