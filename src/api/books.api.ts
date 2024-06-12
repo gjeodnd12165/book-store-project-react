@@ -6,7 +6,7 @@ interface IFetchBooksParams {
   categoryId?: number;
   recentDays?: number;
   page?: number;
-  listNum: number;
+  listNum?: number;
 }
 
 interface IFetchBooksResponse {
@@ -47,6 +47,12 @@ export const addLike = async (bookId: number) => {
 
 export const deleteLike = async (bookId: number) => {
   const response = await httpClient.delete(`/likes/${bookId}`);
+
+  return response.data;
+}
+
+export const fetchBestBooks = async () => {
+  const response = await httpClient.get('/books/best');
 
   return response.data;
 }

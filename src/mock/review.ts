@@ -22,3 +22,9 @@ export const addReview = http.post('http://localhost:1234/reviews/:bookId', () =
     message: 'Review added successfully'
   }, { status: 200 });
 });
+
+export const reviewForMain = http.get('http://localhost:1234/reviews', () => {
+  return HttpResponse.json(mockReviewsData, {
+    status: 200
+  });
+});
