@@ -41,8 +41,9 @@ const BooksListStyle = styled.div<BooksListStyleProps>`
   grid-template-columns: ${({ view }) => view === 'grid' ? 'repeat(4, 1fr)' : 'repeat(1, 1fr)'};
   gap: 24px;
 
-  /* Don't know why this isn't work at all. */
-  /* transition: grid-template-columns 0.5s ease; */
+  @media screen AND ${({ theme }) => (theme.mediaQuery.mobile)} {
+    grid-template-columns: ${({ view }) => view === 'grid' ? 'repeat(2, 1fr)' : 'repeat(1, 1fr)'};
+  }
 `;
 
 export default BooksList

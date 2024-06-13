@@ -4,6 +4,7 @@ export type THeadingSize = 'large' | 'medium' | 'small';
 export type TButtonSize = 'large' | 'medium' | 'small';
 export type TButtonSchema = 'primary' | 'normal' | 'like';
 export type TLayoutWidth = 'large' | 'medium' | 'small';
+export type TMediaQuery = 'mobile' | 'tablet' | 'desktop';
 
 export interface ITheme {
   name: TThemeName;
@@ -34,6 +35,9 @@ export interface ITheme {
     width: {
       [key in TLayoutWidth]: string;
     }
+  },
+  mediaQuery: {
+    [key in TMediaQuery]: string;
   }
 }
 
@@ -97,6 +101,11 @@ export const light: ITheme = {
       medium: '760px',
       small: '320px'
     }
+  },
+  mediaQuery: {
+    mobile: '(max-width: 768px)',
+    tablet: '(max-width: 1024px)',
+    desktop: '(min-width: 1025px)'
   }
 };
 

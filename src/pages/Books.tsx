@@ -71,6 +71,13 @@ const BooksStyle = styled.div`
     align-items: center;
     padding: 20px 0;
   }
+
+  @media screen AND (${({ theme }) => (theme.mediaQuery.mobile)}) {
+    .filter {
+      flex-direction: column;
+      align-items: end;
+    }
+  }
 `
 
 export default Books

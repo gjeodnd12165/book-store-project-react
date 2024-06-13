@@ -122,6 +122,10 @@ export const CartStyle = styled.div`
     flex-direction: column;
     gap: 24px;
   }
+
+  @media screen AND ${({ theme }) => (theme.mediaQuery.mobile)} {
+    flex-direction: column;
+  }
 `;
 
 export default Cart

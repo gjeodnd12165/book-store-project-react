@@ -65,6 +65,14 @@ const BooksFilterStyle = styled.div`
     display: flex;
     gap: 8px;
   }
+
+  @media screen AND (${({ theme }) => (theme.mediaQuery.mobile)}) {
+    
+    .category {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 `
 
 export default BooksFilter

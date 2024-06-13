@@ -153,6 +153,12 @@ const BookDetailStyle = styled.div`
       }
     }
   }
+
+  @media screen AND (${({ theme }) => (theme.mediaQuery.mobile)}) {
+    .header {
+      flex-direction: column;
+    }
+  }
 `;
 
 export default BookDetail

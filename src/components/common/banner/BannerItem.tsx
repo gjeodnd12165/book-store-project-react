@@ -71,6 +71,20 @@ const BannerItemStyle = styled.div`
       margin: 0;
     }
   }
+
+  @media screen AND ${({ theme }) => (theme.mediaQuery.mobile)} {
+    .content {
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+      }
+
+      p {
+        font-size: 0.75rem;
+        margin-bottom: 12px;
+      }
+    }
+  }
 `;
 
 export default BannerItem

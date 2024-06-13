@@ -15,7 +15,6 @@ export const createClient = (config?: AxiosRequestConfig) => {
     withCredentials: true,
     ...config,
   });
-
   axiosInstance.interceptors.response.use(
     (response) => {
     return response;
@@ -27,7 +26,7 @@ export const createClient = (config?: AxiosRequestConfig) => {
       return;
     }
     return Promise.reject(error);
-  })
+  });
 
   return axiosInstance;
 }

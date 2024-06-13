@@ -87,6 +87,14 @@ const AddToCartStyle = styled.div<AddToCartStyleProps>`
       margin: 0;
     }
   }
+
+  @media screen AND ${({ theme }) => (theme.mediaQuery.mobile)} {
+    flex-direction: column; 
+
+    .added {
+      top: -100px;
+    }
+  }
 `;
 
 export default AddToCart

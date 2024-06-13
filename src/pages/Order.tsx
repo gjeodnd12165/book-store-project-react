@@ -92,7 +92,8 @@ function Order() {
                 <label>전화번호</label>
                 <div className="input">
                   <InputText inputType='text' 
-                  {...register('contact', { required: true })}/>
+                  {...register('contact', { required: true })}
+                  inputMode='decimal'/>
                 </div>
               </fieldset>
               {errors.contact && <p className="error-text">전화 번호를 입력해주세요</p>}
@@ -157,7 +158,10 @@ const OrderStyle = styled(CartStyle)`
       text-align: right;
     }
   }
-
+  
+  @media screen AND ${({ theme }) => (theme.mediaQuery.mobile)} {
+    flex-direction: column;
+  }
 `;
 
 export default Order

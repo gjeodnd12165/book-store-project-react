@@ -42,6 +42,10 @@ const CartSummaryStyle = styled.div`
       font-weight: 760;
     }
   }
+
+  @media screen AND ${({ theme }) => (theme.mediaQuery.mobile)} {
+    width: 100%;
+  }
 `
 
 export default CartSummary

@@ -20,7 +20,13 @@ export const useBook = (bookId: string | undefined) => {
   const { showToast } = useToast();
 
   const addToCart = (quantity: number) => () =>  {
+    if (!isSignedIn) {
+      showAlert('로그인이 필요합니다.');
+      return;
+    }
+
     if (!book) return;
+    
     addCart({
       bookId: book.id,
       quantity: quantity

@@ -30,15 +30,15 @@ function OrderList() {
           {orders?.map((order) => (
             <React.Fragment key={order.id}>
               <tr>
-                <td>{order.id}</td>
-                <td>{formatDate(order.order.createdAt, 'YYYY.MM.DD')}</td>
-                <td>{order.order.delivery.address}</td>
-                <td>{order.order.delivery.receiver}</td>
-                <td>{order.order.delivery.contact}</td>
-                <td>{order.title}</td>
-                <td>{order.totalQuantity}</td>
-                <td>{formatNumber(order.totalPrice)} 원</td>
-                <td>
+                <td data-title="id">{order.id}</td>
+                <td data-title="주문일자">{formatDate(order.order.createdAt, 'YYYY.MM.DD')}</td>
+                <td data-title="주소">{order.order.delivery.address}</td>
+                <td data-title="수령인">{order.order.delivery.receiver}</td>
+                <td data-title="전화번호">{order.order.delivery.contact}</td>
+                <td data-title="대표상품명">{order.title}</td>
+                <td data-title="수량">{order.totalQuantity}</td>
+                <td data-title="금액">{formatNumber(order.totalPrice)} 원</td>
+                <td data-title="">
                   <Button 
                   onClick={() => selectOrderItem(order.id)}
                   size='small' 
@@ -107,6 +107,51 @@ const OrderListStyle = styled.div`
         padding: 8px 12px;
         gap: 8px;
       }
+    }
+  }
+
+  @media screen AND (${({ theme }) => (theme.mediaQuery.mobile)}) {
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+
+    thead tr {
+      position: absolute;
+      top: -10000px;
+      left: -10000px;
+    }
+
+    tr {
+      border-bottom: 1px solid #000;
+    }
+    
+    td {
+      border: none;
+      border-bottom: 1px solid #ccc;
+      position: relative;
+      padding-left: 50%;
+      white-space: normal;
+      text-align: left;
+    }
+
+    td:before {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    td:before {
+      content: attr(data-title);
     }
   }
 `;
