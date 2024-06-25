@@ -19,7 +19,7 @@ export const fetchBooks = async (params: IFetchBooksParams): Promise<IFetchBooks
     const response = await httpClient.get<IFetchBooksResponse>('/books', {
       params: params,
     });
-
+    
     return response.data;
   } catch (error) {
     return {

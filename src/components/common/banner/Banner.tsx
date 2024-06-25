@@ -29,7 +29,7 @@ function Banner({ banners }: Props) {
     <BannerStyle>
       <BannerContainerStyle $transformValue={transformValue}>
         {banners.map((banner) => (
-          <BannerItem banner={banner} />
+          <BannerItem key={banner.id} banner={banner} />
         ))}
       </BannerContainerStyle>
       <BannerButtonStyle>
@@ -39,6 +39,7 @@ function Banner({ banners }: Props) {
       <BannerIndicatorStyle>
         {banners.map((_, index) => (
           <span 
+          key={index}
           onClick={handleClickIndicator(index)}
           className={index === currentIndex ? 'active' : ''}></span>
         ))}
