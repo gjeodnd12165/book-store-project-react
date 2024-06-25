@@ -27,7 +27,7 @@ export const useAuth = () => {
   const userSignup = (data: SignupProps) => {
     signup(data).then(() => {
       showAlert('회원가입이 완료되었습니다.');
-      navigate('/users/login');
+      navigate('/users/signin');
     });
   }
 
